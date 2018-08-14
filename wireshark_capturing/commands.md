@@ -4,6 +4,8 @@ Request to 10.1.3.251
 
     (arp && (eth.src==1c:b7:2c:b0:29:c4 && eth.dst==ff:ff:ff:ff:ff:ff) || (arp.src.proto_ipv4==10.1.3.251 && eth.dst==1c:b7:2c:b0:29:c4)) || (tcp.port==21 && (ip.addr==10.1.3.251))
 
+![arp request for ftp server](https://raw.githubusercontent.com/gahan9/ACN_lab/master/wireshark_capturing/arp_and_tcp.png)
+
 Internal Server Request
 =======================
 
