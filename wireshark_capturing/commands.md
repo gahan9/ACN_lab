@@ -9,11 +9,35 @@ Request to 10.1.3.251
 Internal Server Request
 =======================
 
-request to : http://ams.nirmauni.ac.in/moodle259/login/index.php
+request to : http://ams.nirmauni.ac.in/moodle259/
 
-    (arp && (eth.src==1c:b7:2c:b0:29:c4 && eth.dst==ff:ff:ff:ff:ff:ff) || (arp.src.proto_ipv4==10.1.3.252 && eth.dst==1c:b7:2c:b0:29:c4)) || ((http || dns || tcp) && ip.addr==10.1.3.252)
+    (arp && (eth.src==1c:b7:2c:b0:29:c4 && eth.dst==ff:ff:ff:ff:ff:ff) ||(arp.src.proto_ipv4==10.1.3.252 && eth.src==1c:b7:2c:b0:29:c4 && eth.dst==ff:ff:ff:ff:ff:ff)) || ((http || tcp) && ip.addr==10.1.3.252) || (dns.qry.name == ams.nirmauni.ac.in)
 
-![internal server capturing](https://raw.githubusercontent.com/gahan9/ACN_lab/master/wireshark_capturing/dns%2Barp%2Btcp%2Bhttp_for_10.1.3.252.png)
+
+#### Explanation:
+
+
+    (arp && (eth.src==1c:b7:2c:b0:29:c4 && eth.dst==ff:ff:ff:ff:ff:ff) || (arp.src.proto_ipv4==10.1.3.252 && eth.src==1c:b7:2c:b0:29:c4 && eth.dst==ff:ff:ff:ff:ff:ff))
+> arp is filter keyword in wireshark to display only arp packets 
+> Here the goal is to filter out packets which are resolving mac address of our destination
+> `eth.dst==ff:ff:ff:ff:ff:ff` will broadcast with all bits high from source machine having mac address `1c:b7:2c:b0:29:c4`
+> `arp.src.proto_ipv4=10.1.3.252` filters out arp request for IP Address `10.1.3.252`
+
+    ((http || tcp) && ip.addr==10.1.3.252)
+> above filter will filter all the incoming and outgoing http and tcp traffic for IP address 10.1.3.252 with the machine 
+
+    (dns.qry.name == ams.nirmauni.ac.in)
+> dns is the filter in wireshark to only display dns packets
+> above query will further filter out dns packets to only those at which our target address: ams.nirmauni.ac.in is resolved; Hence we only get dns result for our target domain
+
+So final result of full query:
+
+filter Query:
+
+    (arp && (eth.src==1c:b7:2c:b0:29:c4 && eth.dst==ff:ff:ff:ff:ff:ff) ||(arp.src.proto_ipv4==10.1.3.252 && eth.src==1c:b7:2c:b0:29:c4 && eth.dst==ff:ff:ff:ff:ff:ff)) || ((http || tcp) && ip.addr==10.1.3.252) || (dns.qry.name == ams.nirmauni.ac.in)
+
+Result:
+![internal server capturing](https://raw.githubusercontent.com/gahan9/ACN_lab/master/wireshark_capturing/scenario_2/scenario2.full.png)
 
 External Server Request
 ========================
