@@ -9,7 +9,8 @@ Request to 10.1.3.251
 Internal Server Request
 =======================
 
-request to : http://ams.nirmauni.ac.in/moodle259/
+request to : [http://ams.nirmauni.ac.in/moodle259/](http://ams.nirmauni.ac.in/moodle259/)
+with query
 
     (arp && (eth.src==1c:b7:2c:b0:29:c4 && eth.dst==ff:ff:ff:ff:ff:ff) ||(arp.src.proto_ipv4==10.1.3.252 && eth.src==1c:b7:2c:b0:29:c4 && eth.dst==ff:ff:ff:ff:ff:ff)) || ((http || tcp) && ip.addr==10.1.3.252) || (dns.qry.name == ams.nirmauni.ac.in)
 
