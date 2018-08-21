@@ -10,6 +10,7 @@ Internal Server Request
 =======================
 
 request to : [http://ams.nirmauni.ac.in/moodle259/](http://ams.nirmauni.ac.in/moodle259/)
+
 with query
 
     (arp && (eth.src==1c:b7:2c:b0:29:c4 && eth.dst==ff:ff:ff:ff:ff:ff) ||(arp.src.proto_ipv4==10.1.3.252 && eth.src==1c:b7:2c:b0:29:c4 && eth.dst==ff:ff:ff:ff:ff:ff)) || ((http || tcp) && ip.addr==10.1.3.252) || (dns.qry.name == ams.nirmauni.ac.in)
@@ -26,6 +27,7 @@ with query
 
     ((http || tcp) && ip.addr==10.1.3.252)
 > above filter will filter all the incoming and outgoing http and tcp traffic for IP address 10.1.3.252 with the machine 
+> ![tcp traffic](https://raw.githubusercontent.com/gahan9/ACN_lab/master/wireshark_capturing/scenario_2/scenario2_tcp.png)
 
     (dns.qry.name == ams.nirmauni.ac.in)
 > dns is the filter in wireshark to only display dns packets
