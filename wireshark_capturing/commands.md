@@ -19,7 +19,7 @@ with query
 #### Explanation:
 
 
-    (arp && (eth.src==1c:b7:2c:b0:29:c4 && eth.dst==ff:ff:ff:ff:ff:ff) || (arp.src.proto_ipv4==10.1.3.252 && eth.src==1c:b7:2c:b0:29:c4 && eth.dst==ff:ff:ff:ff:ff:ff))
+    (arp && (eth.src==1c:b7:2c:b0:29:c4 && eth.dst==ff:ff:ff:ff:ff:ff) || (arp.src.proto_ipv4==10.1.19.28 && eth.src==1c:b7:2c:b0:29:c4 && eth.dst==ff:ff:ff:ff:ff:ff) || (arp.src.proto_ipv4==10.1.3.252 && eth.src==1c:b7:2c:b0:29:c4 && eth.dst==ff:ff:ff:ff:ff:ff))
 > arp is filter keyword in wireshark to display only arp packets 
 > Here the goal is to filter out packets which are resolving mac address of our destination
 > `eth.dst==ff:ff:ff:ff:ff:ff` will broadcast with all bits high from source machine having mac address `1c:b7:2c:b0:29:c4`
@@ -53,7 +53,7 @@ So final result of full query:
 
 filter Query:
 
-    (arp && (eth.src==1c:b7:2c:b0:29:c4 && eth.dst==ff:ff:ff:ff:ff:ff) ||(arp.src.proto_ipv4==10.1.3.252 && eth.src==1c:b7:2c:b0:29:c4 && eth.dst==ff:ff:ff:ff:ff:ff)) || ((http || tcp) && ip.addr==10.1.3.252) || (dns.qry.name == ams.nirmauni.ac.in)
+    (arp && (eth.src==1c:b7:2c:b0:29:c4 && eth.dst==ff:ff:ff:ff:ff:ff) || (arp.src.proto_ipv4==10.1.19.28 && eth.src==1c:b7:2c:b0:29:c4 && eth.dst==ff:ff:ff:ff:ff:ff) || (arp.src.proto_ipv4==10.1.3.252 && eth.src==1c:b7:2c:b0:29:c4 && eth.dst==ff:ff:ff:ff:ff:ff))  || (arp.src.proto_ipv4==10.1.3.251 && eth.dst==1c:b7:2c:b0:29:c4) || ((http || tcp) && ip.addr==10.1.3.252) || (dns.qry.name == ams.nirmauni.ac.in)
 
 Result:
 ![internal server capturing](https://raw.githubusercontent.com/gahan9/ACN_lab/master/wireshark_capturing/scenario_2/scenario2.full.png)
