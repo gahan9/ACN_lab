@@ -33,6 +33,12 @@ with query
 > ![tcp sync+ack](https://raw.githubusercontent.com/gahan9/ACN_lab/master/wireshark_capturing/scenario_2/scenario2.tcp.syc.ack.png) 
 > Fig: TCP SYNC + ACK
 
+> ![http request](https://raw.githubusercontent.com/gahan9/ACN_lab/master/wireshark_capturing/scenario_2/scenario2.http.request.png)
+> Fig: HTTP request
+
+> ![http response](https://raw.githubusercontent.com/gahan9/ACN_lab/master/wireshark_capturing/scenario_2/scenario2.http.response.png)
+> Fig: HTTP response
+
     (dns.qry.name == ams.nirmauni.ac.in)
 > dns is the filter in wireshark to only display dns packets
 > above query will further filter out dns packets to only those at which our target address: ams.nirmauni.ac.in is resolved; Hence we only get dns result for our target domain
