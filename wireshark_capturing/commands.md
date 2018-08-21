@@ -9,7 +9,7 @@ Request to 10.1.3.251
 Internal Server Request
 =======================
 
-**request to** : [http://ams.nirmauni.ac.in/moodle259/](http://ams.nirmauni.ac.in/moodle259/)
+**request to TARGET** : [http://ams.nirmauni.ac.in/moodle259/](http://ams.nirmauni.ac.in/moodle259/)
 
 
 **filter Query**:
@@ -20,7 +20,12 @@ Internal Server Request
 
 
 #### Explanation:
-
+**Flow**
+- **ARP to DNS** First source will resolve arp request to get mac address of DNS Server `10.1.19.28`
+- **DNS** After that source will communicate with DNS server with query of target domain and receive IP address for target domain
+- **ARP to target IP** Now again source will resolve mac address of target with ARP protocol
+- **TCP** source machine now starts to communicate with Target domain with port
+- **HTTP** source is now communicating on HTTP protocol to send packets
 
     (arp.dst.proto_ipv4==10.1.19.28 && eth.src==1c:b7:2c:b0:29:c4 && eth.dst==ff:ff:ff:ff:ff:ff) || (arp.src.proto_ipv4==10.1.19.28 && eth.dst==1c:b7:2c:b0:29:c4)
 > arp is filter keyword in wireshark to display only arp packets 
