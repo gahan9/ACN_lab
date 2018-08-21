@@ -27,9 +27,10 @@ with query
 
     ((http || tcp) && ip.addr==10.1.3.252)
 > above filter will filter all the incoming and outgoing http and tcp traffic for IP address 10.1.3.252 with the machine 
-> ![tcp sync](https://raw.githubusercontent.com/gahan9/ACN_lab/master/wireshark_capturing/scenario_2/scenario2.tcp.sync.png)
+> ![tcp sync](https://raw.githubusercontent.com/gahan9/ACN_lab/master/wireshark_capturing/scenario_2/scenario2.tcp.sync.png) 
 > Fig: TCP SYNC
-> ![tcp sync+ack](https://raw.githubusercontent.com/gahan9/ACN_lab/master/wireshark_capturing/scenario_2/scenario2.tcp.sync.ack.png)
+
+> ![tcp sync+ack](https://raw.githubusercontent.com/gahan9/ACN_lab/master/wireshark_capturing/scenario_2/scenario2.tcp.syc.ack.png) 
 > Fig: TCP SYNC + ACK
 
     (dns.qry.name == ams.nirmauni.ac.in)
