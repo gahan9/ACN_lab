@@ -16,7 +16,7 @@ Internal Server Request
 
     ((arp.dst.proto_ipv4==10.1.19.28 && eth.src==1c:b7:2c:b0:29:c4 && eth.dst==ff:ff:ff:ff:ff:ff) || (arp.src.proto_ipv4==10.1.19.28 && eth.dst==1c:b7:2c:b0:29:c4) || (arp.dst.proto_ipv4==10.1.3.252 && eth.src==1c:b7:2c:b0:29:c4 && eth.dst==ff:ff:ff:ff:ff:ff) || (arp.src.proto_ipv4==10.1.3.252 && eth.src==1c:b7:2c:b0:29:c4))  || (arp.src.proto_ipv4==10.1.3.252 && eth.dst==1c:b7:2c:b0:29:c4) || ((http || tcp) && ip.addr==10.1.3.252) || (dns.qry.name == ams.nirmauni.ac.in)
 **Result**:
-![internal server capturing](https://raw.githubusercontent.com/gahan9/ACN_lab/master/wireshark_capturing/scenario_2/scenario2.full.png)
+![internal server capturing](https://raw.githubusercontent.com/gahan9/ACN_lab/master/wireshark_capturing/scenario_2/scenario2_full.png)
 
 
 #### Explanation:
