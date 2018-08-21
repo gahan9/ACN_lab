@@ -43,6 +43,12 @@ with query
 > dns is the filter in wireshark to only display dns packets
 > above query will further filter out dns packets to only those at which our target address: ams.nirmauni.ac.in is resolved; Hence we only get dns result for our target domain
 
+> ![dns query](https://raw.githubusercontent.com/gahan9/ACN_lab/master/wireshark_capturing/scenario_2/scenario2.dns.query.png)
+> Fig: DNS query
+
+> ![dns query](https://raw.githubusercontent.com/gahan9/ACN_lab/master/wireshark_capturing/scenario_2/scenario2.dns.response.png)
+> Fig: DNS response
+
 So final result of full query:
 
 filter Query:
