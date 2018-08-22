@@ -26,8 +26,10 @@ Internal Server Request
 - **TCP** source machine now starts to communicate with Target domain with port
 - **HTTP** source is now communicating on HTTP protocol to send packets
 
+
     (arp.dst.proto_ipv4==10.1.19.28 && eth.src==1c:b7:2c:b0:29:c4 && eth.dst==ff:ff:ff:ff:ff:ff) || (arp.src.proto_ipv4==10.1.19.28 && eth.dst==1c:b7:2c:b0:29:c4)
-> arp is filter keyword in wireshark to display only arp packets 
+
+> arp is filter keyword in wireshark to display only arp packets
 > Here the goal is to filter out packets which are resolving mac address of our destination
 > `eth.dst==ff:ff:ff:ff:ff:ff` will broadcast with all bits high from source machine having mac address `1c:b7:2c:b0:29:c4` where `arp.dst.proto_ipv4` used to filter arp request for given destination
 > `arp.src.proto_ipv4=10.1.19.28` filters out arp request for IP Address `10.1.19.28`
