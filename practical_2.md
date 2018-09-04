@@ -38,6 +38,37 @@ Wireshark Filter:
 #### Result:
 ![0 bytes payload](https://raw.githubusercontent.com/gahan9/ACN_lab/master/wireshark_capturing/practical_2/ping_dst_src_0B.png) 
 
+
+Ping with payload `32 bytes`
+
+    ping -s 32 10.1.3.17
+
+Wireshark Filter:
+
+    ip.src == 10.1.3.33 && ip.dst == 10.1.3.17
+
+#### Result:
+![32 bytes payload](https://raw.githubusercontent.com/gahan9/ACN_lab/master/wireshark_capturing/practical_2/ping_src_dst_32B.png) 
+
+- No padding will be observed in this case as packet length `74 B` is greater than minimum ethernet frame size. 
+
+
+Ping with payload `65500 bytes`
+
+    ping -s 65500 10.1.3.17
+
+Wireshark Filter:
+
+    ip.src == 10.1.3.33 && ip.dst == 10.1.3.17
+
+- In this scenario payload size `65500 B` is greater than MTU size `1480 B` hence the payload is fragmented and all other packets except last one are IP packets 
+whereas last packet of remaining payload bytes will be ICMP packet as observed in below result.
+#### Result:
+> ![65500 bytes payload (1st packet)](https://raw.githubusercontent.com/gahan9/ACN_lab/master/wireshark_capturing/practical_2/ping_src_dst_65500B_1st.png) 
+> Fig: 65500 bytes payload (1st packet) IP
+> ![65500 bytes payload (last packet)](https://raw.githubusercontent.com/gahan9/ACN_lab/master/wireshark_capturing/practical_2/ping_src_dst_65500B_last.png) 
+> Fig: 65500 bytes payload (last packet) ICMP
+
 Task 2: tracert 8.8.8.8  
 =======================
 
