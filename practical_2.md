@@ -114,6 +114,8 @@ Task 3: Observer web request communication on ports with 3-tabs
 | www.sherlockology.com | 109.228.21.63 | http://www.sherlockology.com/ |
 
 Below are the details of service connection for above websites from source machine `10.1.3.33`
+
+
 | Source IP | Source Port | Destination IP | Destination Port |
 |--------|----------------|-------------|-----|
 | 10.1.3.33 | 43312 | 192.30.253.117 | 443 |
@@ -131,4 +133,3 @@ Ex. - for IP address `192.30.253.117` (github) operating system of source machin
 
 > ![10.1.3.33:43312 -> 109.228.21.63:80](https://raw.githubusercontent.com/gahan9/ACN_lab/master/wireshark_capturing/practical_2/3.109.228.21.63_port-56127.png)
 > Source Machine `10.1.3.33` opened port `56127` to communicate with `109.228.21.63:80`
-
