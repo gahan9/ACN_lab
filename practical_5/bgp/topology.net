@@ -1,0 +1,58 @@
+autostart = False
+version = 0.8.7
+[127.0.0.1:7202]
+    workingdir = C:\Users\swati\AppData\Local\Temp
+    udp = 10201
+    [[7200]]
+        image = C:\Users\swati\GNS3\Images\c7200-adventerprisek9-mz.152-4.M7.image
+        ram = 512
+        sparsemem = True
+        ghostios = True
+    [[ROUTER R3]]
+        console = 2104
+        aux = 2504
+        cnfg = configs\R3.cfg
+        slot0 = C7200-IO-2FE
+        slot1 = PA-4E
+        e1/2 = R1 e1/2
+        x = 2.0
+        y = -30.0
+        z = 1.0
+[127.0.0.1:7200]
+    workingdir = C:\Users\swati\AppData\Local\Temp
+    udp = 10001
+    [[7200]]
+        image = C:\Users\swati\GNS3\Images\c7200-adventerprisek9-mz.152-4.M7.image
+        ram = 512
+        sparsemem = True
+    [[ROUTER R1]]
+        console = 2101
+        aux = 2501
+        cnfg = configs\R1.cfg
+        slot0 = C7200-IO-FE
+        slot1 = PA-4E
+        e1/1 = R2 e1/1
+        e1/2 = R3 e1/2
+        x = -138.0
+        y = -155.0
+        z = 1.0
+[127.0.0.1:7201]
+    workingdir = C:\Users\swati\AppData\Local\Temp
+    udp = 10101
+    [[7200]]
+        image = C:\Users\swati\GNS3\Images\c7200-adventerprisek9-mz.152-4.M7.image
+        ram = 512
+        sparsemem = True
+        ghostios = True
+    [[ROUTER R2]]
+        console = 2103
+        aux = 2503
+        cnfg = configs\R2.cfg
+        slot0 = C7200-IO-2FE
+        slot1 = PA-4E
+        e1/1 = R1 e1/1
+        x = -278.0
+        y = -27.0
+        z = 1.0
+[GNS3-DATA]
+    configs = configs
