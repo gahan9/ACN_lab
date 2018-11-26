@@ -19,6 +19,13 @@ scapy
 from scapy.all import *
 import os
 
+PROTOCOL_MAP = {
+    2: "IGMP",
+    6: "TCP",
+    17: "UDP",
+    139: "139"
+}
+
 
 class PcapFilter(object):
     def __init__(self, filename=None):
@@ -52,13 +59,16 @@ class PcapFilter(object):
 
 
 if __name__ == "__main__":
-    # packets = PcapFilter(os.path.join("D:\\ACN_lab\LPW", "rawtest.pcap"))
     packets = PcapFilter("rawtest.pcap")
     print("Total Packets: ", len(packets.pcap))
     print("Total Distinct Protocols: ", len(packets.distinct_protocols))
     captured_protocols = packets.get_protocol_lis(packets.distinct_protocols)
     print("-" * 50)
-    print("Protocol\tCount")
+    print("{:^13}\t{:^10}".format("Protocol", "Count"))
     if captured_protocols:
         for key, value in captured_protocols.items():
-            print("{}\t\t{}".format(key, len(value)))
+            proto_id = key
+            proto_name = PROTOCOL_MAP.get(key, key)
+            protocol = "{} ({})".format(proto_id, proto_name)
+            proto_packets = len(value)
+            print("{:^13}\t{:^10}".format(protocol, proto_packets))
