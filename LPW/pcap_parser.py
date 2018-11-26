@@ -38,26 +38,27 @@ class PcapFilter(object):
         has_packets = bool(packets)
         return has_packets, packets
 
-    def get_protocol_lis(self, start=0, end=1000):
+    def get_protocol_lis(self, sniff_protocol):
         _proto_dict = {}
-        for i in range(start, end+1):
+        for i in sniff_protocol:
             data = self.filter_protocol(i)
             if data[0]:
                 _proto_dict[i] = data[1]
         return _proto_dict
 
     @property
-    def print_summary(self):
-        print("Total Packets: ", len(self.pcap))
-        captured_protocols = self.get_protocol_lis(200)
-        print("-"*50)
-        print("Protocol\tCount")
-        if captured_protocols:
-            for key, value in captured_protocols.items():
-                print("{}\t{}".format(key, len(value)))
-        return True
+    def distinct_protocols(self):
+        return set([i.proto for i in self.pcap])
 
 
 if __name__ == "__main__":
-    p = PcapFilter("rawtest.pcap")
-    p.print_summary
+    # packets = PcapFilter(os.path.join("D:\\ACN_lab\LPW", "rawtest.pcap"))
+    packets = PcapFilter("rawtest.pcap")
+    print("Total Packets: ", len(packets.pcap))
+    print("Total Distinct Protocols: ", len(packets.distinct_protocols))
+    captured_protocols = packets.get_protocol_lis(packets.distinct_protocols)
+    print("-" * 50)
+    print("Protocol\tCount")
+    if captured_protocols:
+        for key, value in captured_protocols.items():
+            print("{}\t\t{}".format(key, len(value)))
